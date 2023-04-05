@@ -17,6 +17,8 @@
                     :placeholder=placeholderText
                     ref="textareaRef"
                     class="textarea"
+                    v-autofocus
+                    maxlength="100"
                     >
                 </textarea>
             </div>
@@ -70,5 +72,13 @@ const focusTextarea = () => {
 defineExpose({
     focusTextarea
 })
+
+// DIRECTIVES
+
+const vAutofocus = {
+    mounted: (el) => {
+        el.focus()
+    }
+}
 
 </script>

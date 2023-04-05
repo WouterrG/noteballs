@@ -34,7 +34,7 @@
 
 // IMPORTS
 
-import { computed } from 'vue';
+import { computed, reactive } from 'vue';
 import { useStoreNotes } from '@/stores/storeNotes'
 
 
@@ -60,6 +60,12 @@ const characterLength = computed(() => {
     return `${ length } ${ description }`
 })
 
+// MODALS
+
+const modals = reactive({
+    deleteNote: false,
+    editNote: false
+})
 
 
 </script>
