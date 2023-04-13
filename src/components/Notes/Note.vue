@@ -4,7 +4,7 @@
       <div class="content">
         {{ note.content }}
         <div class="columns is-mobile has-text-grey-light mt-2">
-          <small class="column">{{ note.date }}</small>
+          <small class="column">{{ dateFormatted }}</small>
           <small class="column has-text-right">{{ characterLength }}</small>
         </div>
       </div>
@@ -51,12 +51,10 @@ const props = defineProps({
 
 // DATE FORMATTING
 
-const formatter = ref("YYYY-MM-DD HH:mm:ss");
-const formatted = useDateFormat(useNow(), formatter);
-
 const dateFormatted = computed(() => {
-  let date = new Date(pareseInt(props.note.date));
-  return useDateFormat(useNow(), formatter);
+  let date = new Date(parseInt(props.note.date));
+  let formattedDate = useDateFormat(date, "DD-MM-YYYY HH:mm");
+  return formattedDate.value;
 });
 
 // CHARACTER COUNT
