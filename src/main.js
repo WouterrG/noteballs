@@ -1,11 +1,14 @@
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import App from './App.vue'
-import router from '@/router/index.js'
+import { createApp, markRaw } from "vue";
+import { createPinia } from "pinia";
+import App from "./App.vue";
+import router from "@/router/index.js";
 
-import './assets/main.css'
+import "./assets/main.css";
 
-createApp(App)
-    .use(router)
-    .use(createPinia())
-    .mount('#app')
+const pinia = createPinia();
+
+pinia.use(({ store }) => {
+  store.router = markRaw(router);
+});
+
+createApp(App).use(router).use(pinia).mount("#app");
